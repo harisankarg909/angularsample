@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Employee Directory Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+
+</head>
+<body>
+    <br><br><br><br><br><br><br><br><br>
+    <div class="container" ng-controller="AppCtrl">
+    <button class="btn btn-success btn-md" ng-click="getEmployee()">GET Employee</button>
+    <p ng-model="data"></p>
+
+       
+</div>
+
+
+<script>
+var emp = angular.module('emp', []);
+emp.controller('AppCtrl', ['$scope', '$http', function($scope, $http){
+
+      $scope.getEmployee = function() {
+          
+      $http.get('/employee').success(function (response) {
+               $scope.data = response;
+            })
+            
+    };
+    
+}]);
+</script>
+</body>
+
+</html>
